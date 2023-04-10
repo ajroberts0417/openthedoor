@@ -18,11 +18,14 @@ async def on_ready():
     print('------')
 
 
-def send_message_to_openthedoor_channels(caller_number):
+async def send_message_to_openthedoor_channels(caller_number):
     print("Sending message to openthedoor channels")
     for guild in bot.guilds:
         print(f"Sending message to {guild.name}")
         channel = discord.utils.get(guild.channels, name='openthedoor')
         if channel is not None:
             print(f"Sending message to {channel.name}")
-            channel.send(f'OpenTheDoor received a call from {caller_number}.')
+            await channel.send(f'OpenTheDoor received a call from {caller_number}.')
+
+
+bot.setup_hook(send_message_to_openthedoor_channels)  # Register the async function as a setup hook

@@ -24,7 +24,8 @@ def handle_call():
 
     # Send Discord notification
     # this works locally but doesn't work on Python anywhere
-    bot.loop.create_task(send_message_to_openthedoor_channels(caller_number))
+    # doesn't work on render either because it's not async
+    # bot.loop.create_task(send_message_to_openthedoor_channels(caller_number))
 
     # Play a message to the caller
     response = VoiceResponse()
