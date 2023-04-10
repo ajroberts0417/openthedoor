@@ -11,35 +11,31 @@ Built w/ love by Andrew, inspired by Eric.
 - Python 3
 - Flask
 - Twilio
+- Discord.py
+- Gunicorn
+
+## Deployment
+
+For production deploys use:
+`gunicorn wsgi:app`
 
 
 
 ## Installation
 
-1. Install the required packages:
-
-`pip install Flask twilio`
-
-
-2. Save the Flask application code to a file named `app.py`:
-
-```python
-from flask import Flask, request
-from twilio.twiml.voice_response import VoiceResponse
-
-app = Flask(__name__)
-
-@app.route('/handle_call', methods=['POST'])
-def handle_call():
-    response = VoiceResponse()
-    response.play(digits='9')
-    return str(response)
-
-if __name__ == '__main__':
-    app.run()
+1. Install python 3.10.10
+```sh
+pyenv install 3.10.10
+pyenv local 3.10.10
 ```
 
-# Running the Application
+
+2. Install the required packages:
+
+`pipenv install`
+
+
+# Running the Application in Development
 1. Start the Flask application:
 
 `python app.py`
