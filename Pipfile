@@ -8,6 +8,7 @@ flask = "*"
 twilio = "*"
 "discord.py" = "*"
 requests = "*"
+gunicorn = "*"
 
 [dev-packages]
 
