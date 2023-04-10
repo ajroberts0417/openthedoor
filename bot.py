@@ -1,10 +1,11 @@
 import discord
 from discord import Intents
 from discord.ext import commands
+import os
 
 
 ## SETUP DISCORD BOT
-DISCORD_BOT_TOKEN = 'MTA5NTAxMjcyNDg1OTIwNzY4MA.GyHamB.nA02cLbk4qEZlUSlXTDELqNniCC4DLYWmPt2F4'  # Replace with your bot's token
+DISCORD_BOT_TOKEN = os.environ["DISCORD_BOT_TOKEN"]  # Replace with your bot's token
 
 intents = Intents.default()
 intents.typing = False
