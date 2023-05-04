@@ -32,7 +32,7 @@ def handle_call():
     # Play a message to the caller
     response = VoiceResponse()
     response.say('Your wish has been granted. Welcome to Fractal', voice='alice')
-    response.play(digits='9')
+    response.play(digits='w9')
     return str(response)
 
 
