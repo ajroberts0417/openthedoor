@@ -6,7 +6,6 @@ import requests
 
 app = Flask(__name__)
 
-
 def read_file(filename):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     file_path = os.path.join(current_dir, filename)
@@ -27,7 +26,7 @@ def handle_call():
     # Send Discord notification
     # this works locally but doesn't work on Python anywhere
     # doesn't work on render either because it's not async
-    url = f'https://api.val.town/eval/@joey.sendDiscordMessage("221095018334824693851","{msg}")'
+    url = f'https://api.val.town/eval/@joey.sendDiscordMessage("1095018334824693851","{msg}")'
     requests.get(url)
 
     # Play a message to the caller
