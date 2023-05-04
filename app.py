@@ -1,7 +1,8 @@
 from flask import Flask, render_template_string, request
 from twilio.twiml.voice_response import VoiceResponse
 import os
-from bot import bot, DISCORD_BOT_TOKEN, send_message_to_openthedoor_channels
+import requests
+
 
 app = Flask(__name__)
 
@@ -21,11 +22,13 @@ print(readme_content)
 def handle_call():
     # Get the caller's phone number
     caller_number = request.form.get('From', 'Unknown')
+    msg = f'OpenTheDoor received a call from {caller_number}.'
 
     # Send Discord notification
     # this works locally but doesn't work on Python anywhere
     # doesn't work on render either because it's not async
-    # bot.loop.create_task(send_message_to_openthedoor_channels(caller_number))
+    url = f'https://api.val.town/eval/@joey.sendDiscordMessage("221095018334824693851","{msg}")'
+    requests.get(url)
 
     # Play a message to the caller
     response = VoiceResponse()
@@ -63,7 +66,4 @@ def index():
     return render_template_string(template, readme_content=readme_content, app_source_code=app_source_code)
 
 if __name__ == '__main__':
-    from threading import Thread
-    bot_thread = Thread(target=bot.run, args=(DISCORD_BOT_TOKEN,))
-    bot_thread.start()
     app.run()
